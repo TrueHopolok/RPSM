@@ -18,7 +18,7 @@ current_game = 1
 first_round = True
 m1_points = 0
 m2_points = 0
-is_m1_winner = False
+is_m1_won = False
 
 # TESTS EXECUTION
 while current_game <= GAMES_AMOUNT:
@@ -48,17 +48,17 @@ while current_game <= GAMES_AMOUNT:
     else:
         if m1.last_throw > m2.last_throw:
             if m1.last_throw == 2 and m2.last_throw == 0:
-                is_m1_winner = False
+                is_m1_won = False
             else:
-                is_m1_winner = True
+                is_m1_won = True
 
         else:
             if m1.last_throw == 0 and m2.last_throw == 2:
-                is_m1_winner = True
+                is_m1_won = True
             else:
-                is_m1_winner = False
+                is_m1_won = False
 
-        if is_m1_winner:
+        if is_m1_won:
             m1.previous_result = 1
             m2.previous_result = -1
             m1_points += 1
