@@ -34,7 +34,8 @@ class RPSM:
         
         # TIE MODULE
         elif RPSM.previous_result == 0:
-            return RPSM.last_throw                      # CS
+            RPSM.last_throw = (RPSM.last_throw + 1) % 3 # CF
+            return RPSM.last_throw
             
         # DATA VALIDATION
         else:
