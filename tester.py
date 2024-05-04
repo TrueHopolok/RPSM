@@ -73,6 +73,7 @@ while current_game <= GAMES_AMOUNT:
     ROUNDS_PLAYED += 1
     first_round = False
 
+# M1 RESULTS OUTPUT
 print(f'''
 ====   
 GAMES PLAYED:    {GAMES_AMOUNT}
