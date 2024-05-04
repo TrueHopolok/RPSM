@@ -20,16 +20,8 @@ class RPSM:
 
         # FIRST MOVE MODULE
         if RPSM.previous_result == None:
-            generated_value = random.random()
-            if generated_value < 0.31:
-                RPSM.last_throw = 1
-                return 1
-            elif generated_value < 0.31+0.33:
-                RPSM.last_throw = 0
-                return 0
-            else:
-                RPSM.last_throw = 2
-                return 2
+            RPSM.last_throw = 2
+            return RPSM.last_throw
 
         # DATA VALIDATION
         if (not isinstance(RPSM.previous_result, int)) or (not isinstance(RPSM.last_throw, int)):
