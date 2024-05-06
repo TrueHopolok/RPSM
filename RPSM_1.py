@@ -1,5 +1,3 @@
-import random
-
 class RPSM:
     previous_result = None
     '''
@@ -25,7 +23,7 @@ class RPSM:
 
         # DATA VALIDATION
         if (not isinstance(RPSM.previous_result, int)) or (not isinstance(RPSM.last_throw, int)):
-            raise Exception('RPSM-1 class data corruption')
+            raise Exception('RPSM class data corruption')
 
         # WIN/LOSE MODULE
         if RPSM.previous_result == 1 or RPSM.previous_result == -1:
