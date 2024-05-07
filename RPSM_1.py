@@ -1,5 +1,3 @@
-import random
-
 class RPSM:
 
     last_throw = 0
@@ -21,7 +19,7 @@ class RPSM:
         '''
 
         # DATA VALIDATION
-        if result != None and (result > 1 or result < -1):
+        if result != None and result != 1 and result != -1 and result != 0:
             raise Exception('Invalid arguments')
         
         RPSM._previous_result = result
@@ -35,7 +33,7 @@ class RPSM:
 
         # FIRST MOVE MODULE
         if RPSM._previous_result == None:
-            RPSM.last_throw = random.choice([0, 1, 2])
+            RPSM.last_throw = 2
             return RPSM.last_throw
 
         # DATA VALIDATION
