@@ -1,6 +1,6 @@
 # SELECTED MODELS
 from RPSM_1 import RPSM as m1
-from AM     import AM   as m2
+from HM     import HM   as m2
 
 # TESTS AMOUNT
 GAMES_AMOUNT = 100000
@@ -26,9 +26,9 @@ while current_game <= GAMES_AMOUNT:
         if m1_points == 3:
             M1_GAMES_WINS += 1
         m1_points = 0
-        m1.previous_result = None
+        m1.set_last_result(None)
         m2_points = 0
-        m2.previous_result = None
+        m2.set_last_result(None)
         current_game += 1
         first_round = True
         continue
@@ -38,8 +38,8 @@ while current_game <= GAMES_AMOUNT:
 
     # TIE
     if m1.last_throw == m2.last_throw:
-        m1.previous_result = 0
-        m2.previous_result = 0
+        m1.set_last_result(0)
+        m2.set_last_result(0)
         if first_round:
             TIE_FIRST += 1
         TIE_TOTAL += 1
@@ -59,15 +59,15 @@ while current_game <= GAMES_AMOUNT:
                 is_m1_won = False
 
         if is_m1_won:
-            m1.previous_result = 1
-            m2.previous_result = -1
+            m1.set_last_result(1)
+            m2.set_last_result(-1)
             m1_points += 1
             if first_round:
                 M1_FIRST_WINS += 1
             M1_TOTAL_WINS += 1
         else:
-            m1.previous_result = -1
-            m2.previous_result = 1
+            m1.set_last_result(-1)
+            m2.set_last_result(1)
             m2_points += 1
     
     ROUNDS_PLAYED += 1

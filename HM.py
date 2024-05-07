@@ -1,14 +1,7 @@
 import random
 
 class HM:
-    previous_result = None
-    '''
-    READ / WRITE\n
-       1 = last round was win\n
-       0 = last round was draw\n
-      -1 = last round was lose\n
-    None = to reset model\n
-    '''
+
     last_throw = 0
     '''
     READ ONLY\n
@@ -16,11 +9,34 @@ class HM:
     1 = rock\n
     0 = scissors\n
     '''
+
+    _previous_result = None
+
+    def set_last_result(result : int | None):
+        '''
+           1 = last round was win\n
+           0 = last round was draw\n
+          -1 = last round was lose\n
+        None = to reset model\n
+        '''
+
+        # DATA VALIDATION
+        if result != None and (result > 1 or result < -1):
+            raise Exception('Invalid arguments')
+        
+        HM._previous_result = result
+
+
     def throw() -> int:
+        '''
+        Return generated throw\n
+        If needed, result can be accessed through public field "last_throw" (READ ONLY)\n 
+        '''
+        
         generated_value = random.random()
 
         # FIRST MOVE MODULE
-        if HM.previous_result == None:
+        if HM._previous_result == None:
             if generated_value < 0.31:
                 HM.last_throw = 0
                 return 0
@@ -32,11 +48,11 @@ class HM:
                 return 1
 
         # DATA VALIDATION
-        if (not isinstance(HM.previous_result, int)) or (not isinstance(HM.last_throw, int)):
+        if (not isinstance(HM._previous_result, int)) or (not isinstance(HM.last_throw, int)):
             raise Exception('HM class data corruption')
 
         # WIN MODULE
-        if HM.previous_result == 1:
+        if HM._previous_result == 1:
             if generated_value < 0.5:
                 return HM.last_throw                    # CS
             elif generated_value < 0.5+0.3:
@@ -47,7 +63,7 @@ class HM:
                 return HM.last_throw
             
         # LOSE MODULE
-        elif HM.previous_result == -1:
+        elif HM._previous_result == -1:
             if generated_value < 0.2:
                 return HM.last_throw                    # CS
             elif generated_value < 0.2+0.5:
@@ -58,7 +74,7 @@ class HM:
                 return HM.last_throw
         
         # TIE MODULE
-        elif HM.previous_result == 0:
+        elif HM._previous_result == 0:
             if generated_value < 0.5:
                 return HM.last_throw                    # CS
             elif generated_value < 0.5+0.2:
