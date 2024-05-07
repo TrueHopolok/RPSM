@@ -21,13 +21,20 @@ class AM:
         '''
 
         # DATA VALIDATION
-        if result != None and result != 1 and result != -1 and result != 0:
+        if not result in [None, -1, 0, 1]:
             raise Exception('Invalid arguments')
         
         AM._previous_result = result
 
 
     def throw() -> int:
+        '''
+        Return generated throw\n
+        If needed, result can be accessed through public field "last_throw" (READ ONLY)\n 
+        2 = paper\n
+        1 = rock\n
+        0 = scissors\n
+        '''
 
         # FIRST MOVE MODULE
         if AM._previous_result == None:

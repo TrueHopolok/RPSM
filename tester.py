@@ -1,6 +1,6 @@
 # SELECTED MODELS
 from RPSM_2 import RPSM as m1
-from AM     import AM   as m2
+from HM     import HM   as m2
 
 # TESTS AMOUNT
 GAMES_AMOUNT = 100000

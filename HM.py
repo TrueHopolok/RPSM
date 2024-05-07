@@ -21,7 +21,7 @@ class HM:
         '''
 
         # DATA VALIDATION
-        if result != None and result != 1 and result != -1 and result != 0:
+        if not result in [None, -1, 0, 1]:
             raise Exception('Invalid arguments')
         
         HM._previous_result = result
@@ -31,6 +31,9 @@ class HM:
         '''
         Return generated throw\n
         If needed, result can be accessed through public field "last_throw" (READ ONLY)\n 
+        2 = paper\n
+        1 = rock\n
+        0 = scissors\n
         '''
         
         generated_value = random.random()
