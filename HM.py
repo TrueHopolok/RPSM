@@ -39,14 +39,12 @@ class HM:
         if HM._previous_result == None:
             if generated_value < 0.31:
                 HM.last_throw = 0
-                return 0
             elif generated_value < 0.31+0.33:
                 HM.last_throw = 2
-                return 2
             else:
                 HM.last_throw = 1
-                return 1
-
+            return HM.last_throw
+            
         # DATA VALIDATION
         if (not isinstance(HM._previous_result, int)) or (not isinstance(HM.last_throw, int)):
             raise Exception('HM class data corruption')

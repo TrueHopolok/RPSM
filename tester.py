@@ -1,5 +1,5 @@
 # SELECTED MODELS
-from RPSM_1 import RPSM as m1
+from RPSM_2 import RPSM as m1
 from AM     import AM   as m2
 
 # TESTS AMOUNT
@@ -19,6 +19,7 @@ first_round = True
 m1_points = 0
 m2_points = 0
 is_m1_won = False
+
 
 # TESTS EXECUTION
 while current_game <= GAMES_AMOUNT:
