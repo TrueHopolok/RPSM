@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl1ikqas4fxd"]
+
+[ext_resource type="Texture2D" uid="uid://u2nktykygi1r" path="res://scissors_normal.png" id="1_7m34d"]
+[ext_resource type="Texture2D" uid="uid://c05b4xi2cqhna" path="res://scissors_pressed.png" id="2_blsl4"]
+[ext_resource type="Texture2D" uid="uid://o0xx0y63nfno" path="res://scissors_hover.png" id="3_51dbu"]
+[ext_resource type="Texture2D" uid="uid://kt46fkd53vqj" path="res://rock_normal.png" id="4_1wgoy"]
+[ext_resource type="Texture2D" uid="uid://60weq6e6vsqu" path="res://paper_normal.png" id="4_5h1pa"]
+[ext_resource type="Texture2D" uid="uid://bwcy5ovuqlksp" path="res://rock_pressed.png" id="5_b8mwq"]
+[ext_resource type="Texture2D" uid="uid://bgtk8tnj13cxr" path="res://paper_pressed.png" id="5_qf88v"]
+[ext_resource type="Texture2D" uid="uid://6iajkuc8i8sm" path="res://paper_hover.png" id="6_ruijk"]
+[ext_resource type="Texture2D" uid="uid://dahvq5rjfsix6" path="res://rock_hover.png" id="6_tfyfe"]
+[ext_resource type="Texture2D" uid="uid://70nufqpkmkhx" path="res://unknown_choice.png" id="10_stuh0"]
+[ext_resource type="Theme" uid="uid://dbcksj4f55jyn" path="res://minecraft.tres" id="11_ryo5u"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayerChoice" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 168.0
+offset_right = 328.0
+offset_bottom = 256.0
+scale = Vector2(1, 0.995333)
+alignment = 1
+
+[node name="ScissorsButton" type="TextureButton" parent="PlayerChoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("1_7m34d")
+texture_pressed = ExtResource("2_blsl4")
+texture_hover = ExtResource("3_51dbu")
+stretch_mode = 0
+
+[node name="PaperButton" type="TextureButton" parent="PlayerChoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("4_5h1pa")
+texture_pressed = ExtResource("5_qf88v")
+texture_hover = ExtResource("6_ruijk")
+stretch_mode = 0
+
+[node name="RockButton" type="TextureButton" parent="PlayerChoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("4_1wgoy")
+texture_pressed = ExtResource("5_b8mwq")
+texture_hover = ExtResource("6_tfyfe")
+stretch_mode = 0
+
+[node name="ModelChoice" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 166.0
+offset_right = 511.0
+offset_bottom = 254.0
+texture = ExtResource("10_stuh0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 19.0
+offset_right = 332.0
+offset_bottom = 46.0
+fit_content = true
+scroll_active = false
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 34.0
+offset_right = 325.0
+offset_bottom = 57.0
+theme = ExtResource("11_ryo5u")
+text = "Status"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 10.0
+offset_right = 321.0
+offset_bottom = 33.0
+theme = ExtResource("11_ryo5u")
+text = "0:0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameoverBG" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 600.0
+offset_bottom = 399.0
+color = Color(0.00784314, 0, 0.0431373, 0.811765)
+
+[node name="StatsBG" type="ColorRect" parent="GameoverBG"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 210.0
+offset_right = 70.0
+offset_bottom = 237.0
+scale = Vector2(8.41608, 6.34895)
+color = Color(0, 0, 0, 0.811765)
+
+[node name="GameStats" type="RichTextLabel" parent="GameoverBG"]
+layout_mode = 2
+offset_left = 36.0
+offset_top = 215.0
+offset_right = 368.0
+offset_bottom = 376.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+theme = ExtResource("11_ryo5u")
+theme_override_font_sizes/normal_font_size = 32
+text = "Games played: 0
+Games won: 0
+Rounds played: 0
+Rounds won: 0
+Rounds tied: 0"
+
+[node name="ResultLabel" type="Label" parent="GameoverBG"]
+layout_mode = 2
+offset_left = 173.0
+offset_top = 63.0
+offset_right = 413.0
+offset_bottom = 171.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource("11_ryo5u")
+theme_override_font_sizes/font_size = 64
+text = "RPS_AI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameoverBG"]
+layout_mode = 2
+offset_left = 404.0
+offset_top = 295.0
+offset_right = 492.0
+offset_bottom = 324.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 10
+size_flags_vertical = 6
+theme = ExtResource("11_ryo5u")
+text = "Play again"
