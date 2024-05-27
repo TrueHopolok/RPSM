@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bl1ikqas4fxd"]
+[gd_scene load_steps=13 format=3 uid="uid://bl1ikqas4fxd"]
 
 [ext_resource type="Texture2D" uid="uid://u2nktykygi1r" path="res://scissors_normal.png" id="1_7m34d"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_qrkl8"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://o0xx0y63nfno" path="res://scissors_hover.png" id="3_51dbu"]
 [ext_resource type="Texture2D" uid="uid://kt46fkd53vqj" path="res://rock_normal.png" id="4_1wgoy"]
 [ext_resource type="Texture2D" uid="uid://60weq6e6vsqu" path="res://paper_normal.png" id="4_5h1pa"]
-[ext_resource type="Script" path="res://playerchoice.gd" id="5_8wijj"]
 [ext_resource type="Texture2D" uid="uid://bwcy5ovuqlksp" path="res://rock_pressed.png" id="5_b8mwq"]
 [ext_resource type="Texture2D" uid="uid://bgtk8tnj13cxr" path="res://paper_pressed.png" id="5_qf88v"]
 [ext_resource type="Texture2D" uid="uid://6iajkuc8i8sm" path="res://paper_hover.png" id="6_ruijk"]
@@ -21,46 +20,28 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_qrkl8")
 
-[node name="ScissorsButton" type="TextureButton" parent="."]
+[node name="PlayerChoice" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 168.0
+offset_right = 328.0
+offset_bottom = 256.0
+scale = Vector2(1, 0.995333)
+alignment = 1
+
+[node name="ScissorsButton" type="TextureButton" parent="PlayerChoice"]
 layout_mode = 2
-offset_left = 212.0
-offset_top = 167.0
-offset_right = 312.0
-offset_bottom = 267.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 3
 toggle_mode = true
 texture_normal = ExtResource("1_7m34d")
 texture_pressed = ExtResource("2_blsl4")
 texture_hover = ExtResource("3_51dbu")
 texture_disabled = ExtResource("2_blsl4")
 stretch_mode = 0
-script = ExtResource("5_8wijj")
 
-[node name="RockButton" type="TextureButton" parent="."]
+[node name="PaperButton" type="TextureButton" parent="PlayerChoice"]
 layout_mode = 2
-offset_left = 10.0
-offset_top = 167.0
-offset_right = 110.0
-offset_bottom = 267.0
-size_flags_horizontal = 8
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource("4_1wgoy")
-texture_pressed = ExtResource("5_b8mwq")
-texture_hover = ExtResource("6_tfyfe")
-texture_disabled = ExtResource("5_b8mwq")
-stretch_mode = 0
-script = ExtResource("5_8wijj")
-
-[node name="PaperButton" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 111.0
-offset_top = 167.0
-offset_right = 211.0
-offset_bottom = 267.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 3
 disabled = true
 toggle_mode = true
 button_pressed = true
@@ -69,51 +50,42 @@ texture_pressed = ExtResource("5_qf88v")
 texture_hover = ExtResource("6_ruijk")
 texture_disabled = ExtResource("5_qf88v")
 stretch_mode = 0
-script = ExtResource("5_8wijj")
 
-[node name="AIunknown" type="TextureRect" parent="."]
+[node name="RockButton" type="TextureButton" parent="PlayerChoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("4_1wgoy")
+texture_pressed = ExtResource("5_b8mwq")
+texture_hover = ExtResource("6_tfyfe")
+texture_disabled = ExtResource("5_b8mwq")
+stretch_mode = 0
+
+[node name="ModelChoice" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 428.0
 offset_top = 166.0
-offset_right = 528.0
-offset_bottom = 266.0
+offset_right = 511.0
+offset_bottom = 254.0
 texture = ExtResource("10_stuh0")
 
-[node name="AIscissors" type="TextureRect" parent="."]
-visible = false
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 428.0
-offset_top = 166.0
-offset_right = 528.0
-offset_bottom = 266.0
-texture = ExtResource("2_blsl4")
-
-[node name="AIrock" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 428.0
-offset_top = 166.0
-offset_right = 528.0
-offset_bottom = 266.0
-texture = ExtResource("5_b8mwq")
-
-[node name="AIpaper" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 428.0
-offset_top = 166.0
-offset_right = 528.0
-offset_bottom = 266.0
-texture = ExtResource("5_qf88v")
+offset_left = 270.0
+offset_top = 19.0
+offset_right = 332.0
+offset_bottom = 46.0
+fit_content = true
+scroll_active = false
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 33.0
-offset_right = 448.0
-offset_bottom = 56.0
+offset_left = 268.0
+offset_top = 34.0
+offset_right = 325.0
+offset_bottom = 57.0
 theme = ExtResource("11_ryo5u")
-text = "Made for school project"
+text = "Status"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,6 +101,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameoverBG" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 600.0
